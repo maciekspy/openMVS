@@ -857,9 +857,25 @@ function(cxx_executable_with_flags name folder cxx_flags libs)
   endif()
   # To support mixing linking in static and dynamic libraries, link each
   # library in with an extra call to target_link_libraries.
+message("--------")
   foreach (lib "${libs}")
-    target_link_libraries("${name}" ${lib})
+    target_link_libraries("${name}" PUBLIC ${lib})
+    message("${name}")
+    message(${lib})
   endforeach()
+
+message("--------")
+target_link_libraries(
+        ${name}
+        PUBLIC opencv::core
+               opencv::imgproc
+               opencv::highgui
+               opencv::video)
+  target_link_libraries(${name} PUBLIC ${BZ2_LIBRARIES})
+  target_link_libraries(${name} PUBLIC ceres)
+  target_link_libraries(${name} PUBLIC ${Ceres_LIBRARIES})
+  target_link_libraries(${name} PUBLIC ${Boost_LIBRARIES})
+
   # Set project folder
   set_target_properties("${name}" PROPERTIES FOLDER "${folder}")
 endfunction()
