@@ -872,7 +872,6 @@ target_link_libraries(
                opencv::highgui
                opencv::video)
   target_link_libraries(${name} PUBLIC ${BZ2_LIBRARIES})
-  target_link_libraries(${name} PUBLIC ceres)
   target_link_libraries(${name} PUBLIC ${Ceres_LIBRARIES})
   target_link_libraries(${name} PUBLIC ${Boost_LIBRARIES})
 
