@@ -869,7 +869,8 @@ target_link_libraries(
                opencv::video)
 			   
   find_package(Ceres REQUIRED)
-  message(${Ceres_LIBRARIES})
+  message("--------Linking Protobuf_LIBRARIES BZ2_LIBRARIES Ceres_LIBRARIES Boost_LIBRARIES")
+  target_link_libraries(${name} PUBLIC ${Protobuf_LIBRARIES})
   target_link_libraries(${name} PUBLIC ${BZ2_LIBRARIES})
   target_link_libraries(${name} PUBLIC ${Ceres_LIBRARIES})
   target_link_libraries(${name} PUBLIC ${Boost_LIBRARIES})
